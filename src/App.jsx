@@ -38,9 +38,9 @@ export default function App() {
 
         </Routes>
       </main>
+      <VisitorCounter />
       <footer className="footer">
         © {new Date().getFullYear()} Sayan Mondal — Built with React
-        <VisitorCounter />
       </footer>
     </div>
   )
