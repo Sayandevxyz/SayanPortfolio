@@ -13,7 +13,6 @@ import NotFound from './pages/NotFound.jsx'
 import SkillNetwork from './pages/Skills'
 import ThemeToggle from './pages/themeToggle'
 import SemesterTimeline from './pages/SemesterTimeline'
-import VisitorCounter from "./components/VisitorCounter";
 
 export default function App() {
   return (
@@ -38,7 +37,6 @@ export default function App() {
 
         </Routes>
       </main>
-      <VisitorCounter />
       <footer className="footer">
         © {new Date().getFullYear()} Sayan Mondal — Built with React
       </footer>
