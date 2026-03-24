@@ -1,27 +1,56 @@
 import React, { useState, useEffect, useRef } from "react";
-import { NavLink } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 
 const links = [
-  { label: "Home", to: "/" },
-  { label: "Projects", to: "/projects" },
-  { label: "Gallery", to: "/gallery" },
-  { label: "Skills", to: "/skills" },
-  { label: "Certificates", to: "/certificates" },
-  { label: "Blog", to: "/blog" },
-  { label: "Resume", to: "/resume" },
-  { label: "About Me", to: "/about" },
-  { label: "Contact", to: "/contact" },
-  { label: "Semester", to: "/SemesterTimeline" }
+  { label: "Home", id: "home" },
+  { label: "Projects", id: "projects" },
+  { label: "Gallery", id: "gallery" },
+  { label: "Skills", id: "skills" },
+  { label: "Certificates", id: "certificates" },
+  { label: "Blog", id: "blog" },
+  { label: "Resume", id: "resume" },
+  { label: "About Me", id: "about" },
+  { label: "Contact", id: "contact" },
+  { label: "Semester", id: "semester" }
 ];
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [showButton, setShowButton] = useState(false);
+  const [active, setActive] = useState("home");
+
   const navRef = useRef(null);
   const linksRef = useRef(null);
 
-  // Check if links overflow nav width (to show hamburger)
+  // ✅ Scroll function
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+      setActive(id);
+    }
+  };
+
+  // ✅ Detect active section (scroll spy 🔥)
+  useEffect(() => {
+    const handleScroll = () => {
+      links.forEach((l) => {
+        const section = document.getElementById(l.id);
+        if (section) {
+          const top = section.offsetTop - 120;
+          const height = section.offsetHeight;
+          if (window.scrollY >= top && window.scrollY < top + height) {
+            setActive(l.id);
+          }
+        }
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // overflow check
   const checkOverflow = () => {
     if (!navRef.current || !linksRef.current) return;
     setShowButton(linksRef.current.scrollWidth > navRef.current.offsetWidth);
@@ -33,41 +62,33 @@ export default function Navbar() {
     return () => window.removeEventListener("resize", checkOverflow);
   }, []);
 
- return (
-  <>
-    <nav
-      ref={navRef}
-      style={{
-        position: "sticky",
-        top: 0,
-        zIndex: 100,
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        padding: "1rem 2rem",
-        borderBottom: "1px solid rgba(255,255,255,0.1)",
-        background: "rgba(0,0,0,0.6)",
-        backdropFilter: "blur(10px)",
-        fontFamily: "inherit",
-      }}
-    >
-
+  return (
+    <>
+      <nav
+        ref={navRef}
+        style={{
+          position: "sticky",
+          top: 0,
+          zIndex: 100,
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          padding: "1rem 2rem",
+          background: "rgba(0,0,0,0.6)",
+          backdropFilter: "blur(10px)",
+        }}
+      >
         {/* Logo */}
         <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
           <motion.div
-            className="logo"
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
-            transition={{ type: "spring", stiffness: 200 }}
-            style={{
-              fontWeight: "bold",
-              fontSize: "1.4rem",
-              color: "var(--accent)",
-            }}
+            style={{ fontWeight: "bold", fontSize: "1.4rem", color: "var(--accent)" }}
           >
             SM
           </motion.div>
-          <div style={{ display: "flex", flexDirection: "column" }}>
+
+          <div>
             <h1 style={{ margin: 0, fontSize: 14 }}>Sayan Mondal</h1>
             <div style={{ fontSize: 12, color: "var(--muted)" }}>
               AI • ML • Developer
@@ -75,93 +96,66 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Desktop links */}
+        {/* Desktop Links */}
         <div
           ref={linksRef}
           style={{
             display: showButton ? "none" : "flex",
-            justifyContent: "center",
             gap: "2rem",
-            alignItems: "center",
+            justifyContent: "center",
             flexGrow: 1,
           }}
         >
           {links.map((l) => (
-            <NavLink
-              key={l.to}
-              to={l.to}
-              end
+            <motion.div
+              key={l.id}
+              onClick={() => scrollToSection(l.id)}
+              whileHover={{
+                scale: 1.1,
+                color: "var(--accent)",
+                textShadow: "0 0 8px var(--accent)",
+              }}
               style={{
-                position: "relative",
+                cursor: "pointer",
                 fontSize: "0.95rem",
-                textDecoration: "none",
-                color: "white",
                 fontWeight: 500,
+                color: active === l.id ? "var(--accent)" : "white",
               }}
             >
-              {({ isActive }) => (
+              {l.label}
+
+              {/* 🔥 underline animation */}
+              {active === l.id && (
                 <motion.div
-                  whileHover={{
-                    scale: 1.1,
-                    color: "var(--accent)",
-                    textShadow: "0 0 8px var(--accent)",
-                  }}
-                  transition={{ duration: 0.3 }}
+                  layoutId="underline"
                   style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
+                    height: "2px",
+                    background: "var(--accent)",
+                    marginTop: "4px",
                   }}
-                >
-                  <motion.span
-                    animate={{ color: isActive ? "var(--accent)" : "white" }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    {l.label}
-                  </motion.span>
-                  {isActive && (
-                    <motion.div
-                      layoutId="underline"
-                      initial={{ opacity: 0, y: 5 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.3 }}
-                      style={{
-                        width: "70%",
-                        height: "2px",
-                        marginTop: "4px",
-                        borderRadius: "1px",
-                        backgroundColor: "var(--accent)",
-                        boxShadow: "0 0 6px var(--accent)",
-                      }}
-                    />
-                  )}
-                </motion.div>
+                />
               )}
-            </NavLink>
+            </motion.div>
           ))}
         </div>
 
         {/* Hamburger */}
         {showButton && (
-          <div className="mobile-btn">
-            <button
-              style={{
-                background: "none",
-                border: "none",
-                color: "#fff",
-                fontSize: "1.8rem",
-                cursor: "pointer",
-                zIndex: 10000,
-              }}
-              onClick={() => setIsOpen(!isOpen)}
-            >
-              {isOpen ? "✕" : "☰"}
-            </button>
-          </div>
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            style={{
+              background: "none",
+              border: "none",
+              color: "#fff",
+              fontSize: "1.8rem",
+            }}
+          >
+            {isOpen ? "✕" : "☰"}
+          </button>
         )}
       </nav>
 
-      {/* --- Mobile Dropdown Menu --- */}
+      {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && showButton && (
           <motion.div
@@ -175,48 +169,44 @@ export default function Navbar() {
               width: "100%",
               height: "100vh",
               background: "rgba(0,0,0,0.95)",
-              backdropFilter: "blur(12px)",
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
               paddingTop: "4rem",
-              overflowY: "auto",
               zIndex: 9999,
             }}
           >
             <button
+              onClick={() => setIsOpen(false)}
               style={{
                 position: "absolute",
                 top: "1rem",
                 right: "1rem",
                 fontSize: "2rem",
-                color: "#fff",
                 background: "none",
                 border: "none",
-                cursor: "pointer",
+                color: "#fff",
               }}
-              onClick={() => setIsOpen(false)}
             >
               ✕
             </button>
 
             {links.map((l) => (
-              <NavLink
-                key={l.to}
-                to={l.to}
-                onClick={() => setIsOpen(false)}
+              <div
+                key={l.id}
+                onClick={() => {
+                  scrollToSection(l.id);
+                  setIsOpen(false);
+                }}
                 style={{
-                  color: "#fff",
-                  textDecoration: "none",
-                  padding: "1rem 0",
-                  width: "100%",
-                  textAlign: "center",
-                  fontSize: 16,
-                  borderBottom: "1px solid rgba(255,255,255,0.05)",
+                  padding: "1rem",
+                  fontSize: 18,
+                  cursor: "pointer",
+                  color: active === l.id ? "var(--accent)" : "white",
                 }}
               >
                 {l.label}
-              </NavLink>
+              </div>
             ))}
           </motion.div>
         )}
