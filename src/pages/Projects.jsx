@@ -4,28 +4,28 @@ import { Github, ExternalLink } from 'lucide-react'
 
 const PROJECTS = [
   {
-    title: '🩺 Mammogram Malignancy Detector',
-    desc: 'Hybrid CNN + YOLOv8 ensemble for full-image breast cancer detection with ROI preprocessing and sliding-window inference.',
-    ss: '/mamo.png',
-    tech: ['TensorFlow', 'Keras', 'OpenCV', 'YOLOv8'],
-    live: '#',
-    code: 'https://github.com/Sayanmondal755089/Mammogram-Malignancy-Detector'
+    title: ' AXIOM',
+    desc: 'Where Human Meets Tomorrow',
+    ss: '/axiom.png',
+    tech: ['GSAP + ScrollTrigger (CDN)', 'Canvas API', 'CSS Custom Properties', '	Google Fonts'],
+    live: 'https://axiom54.netlify.app/',
+    code: 'https://github.com/Sayanmondal755089/axiom'
   },
   {
-  title: '🧠 Mental Health Analyzer',
-  desc: 'NLP-based system that analyzes user text to detect signs of anxiety, stress, and depression using sentiment analysis and transformer models.',
-  ss: '/mentalhealth.jpg',
-  tech: ['Python', 'Transformers', 'NLTK', 'scikit-learn'],
-  live: 'https://mental-health-analyzer.streamlit.app/',
-  code: 'https://github.com/Sayanmondal755089/Mental-Health-Analyzer'
+  title: 'CRISISSENSE AI',
+  desc: 'AI-powered disaster prediction using weather intelligence, social media signals & geospatial vulnerability analysis.',
+  ss: '/crisissense.jpg',
+  tech: ['React', 'Tailwind CSS + custom CSS animations', 'Custom SVG', 'Anthropic Claude API '],
+  live: 'https://crisissense-ai.vercel.app/',
+  code: 'https://github.com/Sayanmondal755089/CRISISSENSE-AI'
   },
   {
-    title: '🤖 Indian Sign Language Interpreter',
-    desc: 'Real-time gesture recognition and translation using Mediapipe + TensorFlow, enabling live sign-to-text interpretation.',
-    ss: '/ISL.png',
+    title: 'EcoSort AI',
+    desc: 'Scan your waste.Know what to do.',
+    ss: '/ecosort.png',
     tech: ['Mediapipe', 'TensorFlow', 'React', 'Flask'],
-    live: '#',
-    code: 'https://github.com/Sayanmondal755089/ISL-Interpreter'
+    live: 'https://rb.gy/kxkpty',
+    code: 'https://github.com/Sayanmondal755089/ecosortai'
   },
   {
   title: '💼 Portfolio Website',
@@ -33,7 +33,7 @@ const PROJECTS = [
   ss: '/portfolio.jpg',
   tech: ['React', 'Framer Motion', 'Tailwind CSS'],
   live: '#',
-  code: 'https://github.com/Sayanmondal755089/Sayan-Portfolio3'
+  code: 'https://github.com/Sayanmondal755089/SayanPortfolio'
   },
   {
     title: '💬 DocuChat – Gemini AI Chatbot',
@@ -51,13 +51,13 @@ const PROJECTS = [
     live: '#',
     code: 'https://github.com/Sayanmondal755089/ProfileX'
   },
-  {
-    title: '🧬 Breast Cancer Prediction',
-    desc: 'ML pipeline using SVC, Random Forest, and XGBoost with SMOTE for imbalanced dataset handling and model optimization.',
-    ss: '/breastpred.jpg',
-    tech: ['scikit-learn', 'XGBoost', 'Pandas'],
-    live: '#',
-    code: 'https://github.com/Sayanmondal755089/BreastCancerPrediction'
+ {
+  title: "Open Source Contributions",
+  desc: "Contributed to open-source projects involving machine learning and data-driven solutions. Worked on model building, performance optimization, and data preprocessing using industry-standard tools.",
+  ss: "/opensource.jpg",
+ tech: ["Python", "Machine Learning", "Scikit-learn", "XGBoost", "Pandas", "NumPy", "Data Preprocessing"],
+  live: "#",
+  code: "https://github.com/Sayanmondal755089/badgemagic-app"
   }
 ]
 
