@@ -67,7 +67,7 @@ export default function Contact() {
   };
 
   const quickLinks = [
-    { img: githubLogo, title: "GitHub", link: "https://github.com/Sayanmondal755089" },
+    { img: githubLogo, title: "GitHub", link: "https://github.com/Sayandevxyz" },
     { img: linkedinLogo, title: "LinkedIn", link: "https://www.linkedin.com/in/sayan-mondal78/" },
     { img: gmailLogo, title: "Email", link: "mailto:sanynmandal@gmail.com" },
     { img: whatsappLogo, title: "WhatsApp", link: "https://wa.me/+917550895462" },
