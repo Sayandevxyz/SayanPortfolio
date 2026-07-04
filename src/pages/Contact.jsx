@@ -70,7 +70,7 @@ export default function Contact() {
     { img: githubLogo, title: "GitHub", link: "https://github.com/Sayandevxyz" },
     { img: linkedinLogo, title: "LinkedIn", link: "https://www.linkedin.com/in/sayan-mondal78/" },
     { img: gmailLogo, title: "Email", link: "mailto:sanynmandal@gmail.com" },
-    { img: whatsappLogo, title: "WhatsApp", link: "https://wa.me/+917550895462" },
+    { img: whatsappLogo, title: "WhatsApp", link: "https://wa.me/" },
     { img: instagramLogo, title: "Instagram", link: "https://www.instagram.com/sayan_mondal78/" },
     { img: facebookLogo, title: "Facebook", link: "https://www.facebook.com/share/1BRzJMzmjT/" },
   ];
