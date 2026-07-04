@@ -56,13 +56,13 @@ export default function Resume() {
               👨‍💻 Sayan Mondal
             </h3>
             <p style={{ margintop: 10, fontSize: 15, color: "#ccc" }}>
-              1st Year B.Tech — Computer Science And Business System | Pondicherry University
+              2nd Year B.Tech — Computer Science And Business System | Pondicherry University
             </p>
             <p style={{ margin: "4px 0", fontSize: 14, color: "#aaa" }}>
               📍 Kalapet, Puducherry, India
             </p>
             <p style={{ margin: "4px 0", fontSize: 14, color: "#aaa" }}>
-              ✉️ sayanmondal@gmail.com | 📞 +91 7550895462
+              ✉️ sayanmondal@gmail.com | 📞 
             </p>
           </div>
 
