@@ -3,6 +3,14 @@ import { motion } from 'framer-motion'
 import { Github, ExternalLink } from 'lucide-react'
 
 const PROJECTS = [
+    {
+    title: ' Neo Banks ',
+    desc: 'A collaborative full-stack digital banking simulation built by 11 teams. Each team owns one core module of a modern neo-banking platform.',
+    ss: '/',
+    tech: ['Python 3.7+' , '	Flask + Flask-CORS', 'MySQL', 'HTML CSS JS', '	Google Fonts'],
+    live: 'https://github.com/Sayandevxyz/Neo-banks-project',
+    code: 'https://github.com/Sayandevxyz/Neo-banks-project'
+  },
   {
     title: ' AXIOM',
     desc: 'Where Human Meets Tomorrow',
